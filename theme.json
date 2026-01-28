@@ -1,0 +1,22 @@
+{
+  "id": "my-sine-mod-test",
+  "name": "My Sine Mod",
+  "description": "Minimal test mod that shows a visible banner to verify Sine loading.",
+  "homepage": "https://github.com/watjurk/t",
+  "scripts": {
+    "import.uc.mjs": {
+      "include": [
+        "chrome://browser/content/browser.xhtml",
+        "chrome://browser/content/browser.xul"
+      ]
+    }
+  },
+  "author": "watjurk",
+  "version": "0.0.1",
+  "tags": [
+    "Scripts",
+    "Sine",
+    "Test"
+  ]
+}
+
