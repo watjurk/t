@@ -6,7 +6,7 @@
 
     const banner = document.createElement("div");
     banner.id = bannerId;
-    banner.textContent = "Update counter: 2";
+    banner.textContent = "Update counter: 3";
 
     const style = banner.style;
     style.position = "fixed";
@@ -26,7 +26,39 @@
     const root = document.documentElement || document.body;
     root.appendChild(banner);
 
-    console.log("[my-sine-mod] Banner injected with update counter 2");
+    const browser = window.gBrowser;
+    if (browser && browser.tabs) {
+      const pinnedTabs = Array.from(browser.tabs).filter((tab) => tab.pinned);
+      const pinnedSummary = pinnedTabs.map((tab) => ({
+        label: tab.label,
+        url: tab.linkedBrowser?.currentURI?.spec,
+        workspaceId: tab.getAttribute("zen-workspace-id") || null,
+      }));
+      console.log("[my-sine-mod] gBrowser pinned tabs", pinnedSummary);
+    } else {
+      console.log("[my-sine-mod] gBrowser or browser.tabs not available");
+    }
+
+    const zenWorkspaces = window.gZenWorkspaces;
+    const pinnedContainer = zenWorkspaces?.pinnedTabsContainer;
+    if (pinnedContainer) {
+      const pinnedElements = Array.from(
+        pinnedContainer.querySelectorAll(
+          "tab[pinned], tab[zen-essential], .zen-workspace-pinned-tabs-section tab"
+        )
+      );
+      const zenPinnedSummary = pinnedElements.map((el) => ({
+        id: el.id,
+        label: el.getAttribute("label"),
+        pinned: el.hasAttribute("pinned"),
+        classes: el.className,
+      }));
+      console.log("[my-sine-mod] Zen pinned container tabs", zenPinnedSummary);
+    } else {
+      console.log("[my-sine-mod] gZenWorkspaces.pinnedTabsContainer not available");
+    }
+
+    console.log("[my-sine-mod] Banner injected with update counter 3");
   };
 
   if (document.readyState === "complete" || document.readyState === "interactive") {
