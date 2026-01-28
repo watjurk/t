@@ -6,7 +6,7 @@
 
     const banner = document.createElement("div");
     banner.id = bannerId;
-    banner.textContent = "My Sine Mod is active UPDATE TEST";
+    banner.textContent = "My Sine Mod is active UPDATE TEST 2";
 
     const style = banner.style;
     style.position = "fixed";
