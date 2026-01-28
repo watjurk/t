@@ -6,7 +6,7 @@
 
     const banner = document.createElement("div");
     banner.id = bannerId;
-    banner.textContent = "My Sine Mod is active UPDATE TEST 2";
+    banner.textContent = "Update counter: 2";
 
     const style = banner.style;
     style.position = "fixed";
@@ -25,6 +25,8 @@
 
     const root = document.documentElement || document.body;
     root.appendChild(banner);
+
+    console.log("[my-sine-mod] Banner injected with update counter 2");
   };
 
   if (document.readyState === "complete" || document.readyState === "interactive") {
